@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Manrope", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    background: radial-gradient(circle at top, #fff0f7, #ffd9ea, #d8ddff);
+    overflow: hidden;
+    color: #542c45;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.page.active {
+    display: flex;
+    animation: pageIn 0.8s forwards;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.little-text {
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(54px, 8vw, 96px);
+    line-height: 0.85;
+    letter-spacing: 0.04em;
+    color: #783f62;
+    font-weight: 600;
+    font-style: italic;
+}
+
+h1 span {
+    color: #d44d83;
+}
+
+.subtitle {
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+button {
+    margin-top: 25px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 40px;
+    background: white;
+    color: #b43f72;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(100, 40, 80, 0.18);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.photo-box {
+    width: min(360px, 80vw);
+    height: min(460px, 52vh);
+    padding: 8px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(70, 30, 60, 0.2);
+    animation: photoFloat 4s infinite ease-in-out;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+@keyframes photoFloat {
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+.message {
+    max-width: 700px;
+    margin-top: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(80, 30, 60, 0.13);
+}
+
+.message h2 {
+    font-family: "Cormorant Garamond", serif;
+    letter-spacing: 0.04em;
+    font-size: 3rem;
+    color: #c94778;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.message p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.emoji {
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.two-photos {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-card {
+    width: min(280px, 42vw);
+    height: min(360px, 43vh);
+    padding: 8px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(70, 30, 60, 0.2);
+    transform: rotate(-3deg);
+    animation: photoFloat 4s infinite ease-in-out;
+}
+
+.photo-card.second {
+    transform: rotate(3deg);
+    animation-delay: 0.5s;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.final-page {
+    gap: 15px;
+}
+
+.cake {
+    font-size: 80px;
+    animation: cakeBounce 1.3s infinite alternate;
+}
+
+@keyframes cakeBounce {
+    to {
+        transform: translateY(-12px) rotate(3deg);
+    }
+}
+
+.final-message {
+    max-width: 650px;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.special {
+    color: #b83d70;
+    font-weight: 600;
+}
+
+.heart-line {
+    font-size: 25px;
+    letter-spacing: 5px;
+}
+
+h3 {
+    color: #b83d70;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 38px;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.heart {
+    position: absolute;
+    top: -30px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    top: -20px;
+    animation: confettiFall 4s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .page {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 43px;
+    }
+
+    .message {
+        padding: 17px;
+    }
+
+    .message p {
+        font-size: 14px;
+    }
+
+    .photo-box {
+        height: 44vh;
+    }
+
+    .photo-card {
+        height: 32vh;
+    }
+
+    .two-photos {
+        gap: 10px;
+    }
+}
